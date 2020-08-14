@@ -16,8 +16,8 @@ TagManager:
   - Player
   - Obstacle
   - Enemy
-  - 
-  - 
+  - ForeGround
+  - BackGround
   - 
   - 
   - 
@@ -38,15 +38,30 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Backdrop
+    uniqueID: 3796368447
+    locked: 0
+  - name: SkyBackdrop
+    uniqueID: 2723875287
+    locked: 0
+  - name: MountainBackdrop
+    uniqueID: 1536162257
+    locked: 0
+  - name: GrassBackdrop
+    uniqueID: 2376264181
+    locked: 0
   - name: Background
     uniqueID: 1301715051
     locked: 0
   - name: Ground
     uniqueID: 544548999
     locked: 0
+  - name: Middle
+    uniqueID: 3158267127
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: Foreground
     uniqueID: 3361670005
     locked: 0
