@@ -42,6 +42,7 @@ public class PlayerCombat : MonoBehaviour
         currentHealth -= damage;
         animator.SetTrigger("Hurt");
         if(currentHealth <= 0){
+            // Player dies
             Die();
         }
     }
