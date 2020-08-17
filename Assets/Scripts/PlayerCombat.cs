@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    // Update is called once per frame
+
     public Animator animator;
     public float attackRange = 0.5f;
     public float attackRate = 1f;
@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
     int currentHealth;
     public int maxHealth = 300;
+    public bool isAlive = true;
 
     void Start() {
         currentHealth = maxHealth;
@@ -34,12 +35,14 @@ public class PlayerCombat : MonoBehaviour
         animator.SetTrigger("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies){
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            Debug.Log(enemy.GetComponent<Transform>());
+            enemy.GetComponent<EnemyAI>().TakeDamage(attackDamage);
         }
     }
 
     public void TakeDamage(int damage){
         currentHealth -= damage;
+        Debug.Log("Player got hit");
         animator.SetTrigger("Hurt");
         if(currentHealth <= 0){
             // Player dies
@@ -57,6 +60,7 @@ public class PlayerCombat : MonoBehaviour
         animator.SetBool("IsDead", true);
         GetComponent<Rigidbody2D>().simulated = false;
         GetComponent<Collider2D>().enabled = false;
+        isAlive = false;
         this.enabled = false;
     }
 }
